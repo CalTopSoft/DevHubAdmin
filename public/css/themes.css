@@ -1,0 +1,13 @@
+:root {
+    --primary: #3b82f6;
+    --secondary: #10b981;
+    --background: #1a202c;
+    --text: #ffffff;
+  }
+  
+  body.light {
+    --primary: #2563eb;
+    --secondary: #059669;
+    --background: #e2e8f0;
+    --text: #1a202c;
+  }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoftXStore Admin</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./public/css/admin-base.css">
+  <link rel="stylesheet" href="./public/css/tables.css">
+  <link rel="stylesheet" href="./public/css/forms.css">
+  <link rel="stylesheet" href="./public/css/themes.css">
+</head>
+<body class="bg-gray-900 text-white font-sans transition-all duration-500">
+  <div id="app" class="min-h-screen flex relative z-10">
+    <!-- Sidebar -->
+    <div id="sidebar" class="w-64 bg-gray-800/90 backdrop-blur-md p-4 h-screen fixed shadow-lg transition-transform duration-300">
+      <h1 class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 mb-6 text-center animate-pulse">SoftXStore</h1>
+      <div id="sidebar-content" class="space-y-2"></div>
+      <div class="mt-6 flex items-center justify-between">
+        <button id="theme-toggle" class="p-2 rounded-full bg-gray-700 hover:bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300" title="Cambiar tema">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </button>
+        <button id="logout" class="p-2 rounded-full bg-red-600 hover:bg-red-500 transition-all duration-300">Salir</button>
+      </div>
+    </div>
+    <!-- Main Content -->
+    <div id="main-content" class="flex-1 ml-64 p-8">
+      <div id="page-content" class="bg-gray-800/50 backdrop-blur-md p-6 rounded-lg shadow-xl"></div>
+    </div>
+  </div>
+  <div id="toast-container" class="fixed bottom-4 right-4 space-y-2 z-20"></div>
+  <script type="module" src="./public/js/app.js"></script>
+</body>
+</html>
