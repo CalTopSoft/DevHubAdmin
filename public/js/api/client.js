@@ -1,6 +1,6 @@
 import { auth } from '../utils/auth.js';
 
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = 'https://backend-devhub-hdf7.onrender.com/api';
 
 class ApiClient {
   async request(endpoint, options = {}) {
