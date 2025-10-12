@@ -39,7 +39,7 @@ export default function Sidebar() {
   async function checkServerStatus() {
     try {
       // Usar ApiClient para mantener consistencia con la configuración
-      const response = await fetch('http://localhost:8080/api/admin/ping', { 
+      const response = await fetch('https://backend-devhub-hdf7.onrender.com/api', { 
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
