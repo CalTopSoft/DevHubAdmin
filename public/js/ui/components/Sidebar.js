@@ -1,3 +1,5 @@
+import { config } from '../../config.js';
+
 export default function Sidebar() {
   console.log('Renderizando Sidebar');
   const nav = document.createElement('nav');
@@ -39,7 +41,7 @@ export default function Sidebar() {
   async function checkServerStatus() {
     try {
       // Usar ApiClient para mantener consistencia con la configuración
-      const response = await fetch('https://backend-devhub-hdf7.onrender.com/api', { 
+      const response = await fetch(`${config.API_BASE_URL}/admin/ping`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,

@@ -1,10 +1,10 @@
 import { auth } from '../utils/auth.js';
+import { config } from '../config.js';
 
-const API_BASE_URL = 'https://backend-devhub-hdf7.onrender.com/api';
 
 class ApiClient {
   async request(endpoint, options = {}) {
-    console.log(`Haciendo petición a: ${API_BASE_URL}${endpoint}`);
+    console.log(`Haciendo petición a: ${config.API_BASE_URL}${endpoint}`);
     // AGREGAR ESTE DEBUG:
     if (options.body) {
       console.log('=== FRONTEND DEBUG ===');
@@ -24,7 +24,7 @@ class ApiClient {
     }
 
     try {
-      const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      const response = await fetch(`${config.API_BASE_URL}${endpoint}`, {
         ...options,
         headers
       });
@@ -256,7 +256,7 @@ class ApiClient {
     if (!this.checkAuth()) return;
     const token = auth.getToken();
     const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
-    const response = await fetch(`${API_BASE_URL}/downloads/app/${projectId}`, { headers });
+    const response = await fetch(`${config.API_BASE_URL}/downloads/app/${projectId}`, { headers });
     
     if (response.status === 401) {
       auth.logout('Tu sesión ha expirado. Por favor, inicia sesión nuevamente');
@@ -276,7 +276,7 @@ class ApiClient {
     if (!this.checkAuth()) return;
     const token = auth.getToken();
     const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
-    const response = await fetch(`${API_BASE_URL}/downloads/code/${projectId}`, { headers });
+    const response = await fetch(`${config.API_BASE_URL}/downloads/code/${projectId}`, { headers });
     
     if (response.status === 401) {
       auth.logout('Tu sesión ha expirado. Por favor, inicia sesión nuevamente');
@@ -296,7 +296,7 @@ class ApiClient {
     if (!this.checkAuth()) return;
     const token = auth.getToken();
     const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
-    const response = await fetch(`${API_BASE_URL}/downloads/doc/${projectId}`, { headers });
+    const response = await fetch(`${config.API_BASE_URL}/downloads/doc/${projectId}`, { headers });
     
     if (response.status === 401) {
       auth.logout('Tu sesión ha expirado. Por favor, inicia sesión nuevamente');
@@ -520,7 +520,15 @@ class ApiClient {
       method: 'POST'
     });
   }
-
+  /** 
+   * DELETE /admin/users/:id - Eliminar usuario (admin)
+   */
+  async deleteUser(id) {
+    if (!this.checkAuth()) return;
+    return this.request(`/admin/users/${id}`, {
+      method: 'DELETE'
+    });
+  }
   /** 
    * GET /admin/backup/export - Exportar backup completo 
    */

@@ -68,54 +68,81 @@ export default function BackupPage() {
           <h4 class="font-medium text-gray-300">Seleccionar datos:</h4>
           <button id="select-all" class="text-sm text-purple-400 hover:text-purple-300">Seleccionar todo</button>
         </div>
-        <label class="flex items-center">
-          <input type="checkbox" id="backup-users" checked class="mr-3 text-purple-600">
-          <span>👤 Usuarios (recomendado)</span>
-        </label>
-        <label class="flex items-center">
-          <input type="checkbox" id="backup-companies" checked class="mr-3 text-purple-600">
-          <span>🏢 Empresas (recomendado)</span>
-        </label>
-        <label class="flex items-center">
-          <input type="checkbox" id="backup-projects" checked class="mr-3 text-purple-600">
-          <span>📁 Proyectos (recomendado)</span>
-        </label>
-        <label class="flex items-center">
-          <input type="checkbox" id="backup-projectcategories" checked class="mr-3 text-purple-600">
-          <span>📋 Categorías de Proyectos</span>
-        </label>
-        <label class="flex items-center">
-          <input type="checkbox" id="backup-roles" checked class="mr-3 text-purple-600">
-          <span>👥 Roles</span>
-        </label>
-        <label class="flex items-center">
-          <input type="checkbox" id="backup-reviews" checked class="mr-3 text-purple-600">
-          <span>⭐ Reviews</span>
-        </label>
-        <label class="flex items-center">
-          <input type="checkbox" id="backup-audits" class="mr-3 text-purple-600">
-          <span>📊 Auditorías</span>
-        </label>
-        <label class="flex items-center">
-          <input type="checkbox" id="backup-notifications" class="mr-3 text-purple-600">
-          <span>🔔 Notificaciones</span>
-        </label>
+        
+        <!-- Datos Esenciales -->
+        <div class="border-t border-gray-700 pt-3">
+          <p class="text-xs text-gray-500 mb-2 font-semibold">DATOS ESENCIALES</p>
+          <label class="flex items-center mb-2">
+            <input type="checkbox" id="backup-users" checked class="mr-3 text-purple-600">
+            <span>👤 Usuarios</span>
+          </label>
+          <label class="flex items-center mb-2">
+            <input type="checkbox" id="backup-companies" checked class="mr-3 text-purple-600">
+            <span>🏢 Empresas</span>
+          </label>
+          <label class="flex items-center">
+            <input type="checkbox" id="backup-projects" checked class="mr-3 text-purple-600">
+            <span>📁 Proyectos</span>
+          </label>
+        </div>
+
+        <!-- Configuración del Sistema -->
+        <div class="border-t border-gray-700 pt-3">
+          <p class="text-xs text-gray-500 mb-2 font-semibold">CONFIGURACIÓN</p>
+          <label class="flex items-center mb-2">
+            <input type="checkbox" id="backup-projectcategories" checked class="mr-3 text-purple-600">
+            <span>📋 Categorías</span>
+          </label>
+          <label class="flex items-center mb-2">
+            <input type="checkbox" id="backup-roles" checked class="mr-3 text-purple-600">
+            <span>👥 Roles</span>
+          </label>
+          <label class="flex items-center">
+            <input type="checkbox" id="backup-platforms" checked class="mr-3 text-purple-600">
+            <span>💻 Plataformas</span>
+          </label>
+        </div>
       </div>
+
       <div class="space-y-4">
-        <h4 class="font-medium text-gray-300">Formato:</h4>
-        <label class="flex items-center">
-          <input type="radio" name="format" value="json" checked class="mr-3 text-purple-600">
-          <span>JSON (recomendado)</span>
-        </label>
-        <label class="flex items-center">
-          <input type="radio" name="format" value="csv" class="mr-3 text-purple-600">
-          <span>CSV (para análisis)</span>
-        </label>
-        <div class="mt-4">
+        <!-- Contenido Generado -->
+        <div class="border-b border-gray-700 pb-3">
+          <p class="text-xs text-gray-500 mb-2 font-semibold">CONTENIDO GENERADO</p>
+          <label class="flex items-center mb-2">
+            <input type="checkbox" id="backup-reviews" checked class="mr-3 text-purple-600">
+            <span>⭐ Reviews</span>
+          </label>
+          <label class="flex items-center">
+            <input type="checkbox" id="backup-notifications" class="mr-3 text-purple-600">
+            <span>🔔 Notificaciones</span>
+          </label>
+        </div>
+
+        <!-- Logs del Sistema -->
+        <div class="border-b border-gray-700 pb-3">
+          <p class="text-xs text-gray-500 mb-2 font-semibold">LOGS Y AUDITORÍA</p>
+          <label class="flex items-center">
+            <input type="checkbox" id="backup-audits" class="mr-3 text-purple-600">
+            <span>📊 Auditorías</span>
+          </label>
+        </div>
+
+        <!-- Formato -->
+        <div class="pt-2">
+          <h4 class="font-medium text-gray-300 mb-2">Formato:</h4>
+          <label class="flex items-center mb-2">
+            <input type="radio" name="format" value="json" checked class="mr-3 text-purple-600">
+            <span>JSON (recomendado)</span>
+          </label>
+          <label class="flex items-center mb-3">
+            <input type="radio" name="format" value="csv" class="mr-3 text-purple-600">
+            <span>CSV (NO USAR - Desarrollo)</span>
+          </label>
+          
           <h4 class="font-medium text-gray-300 mb-2">Compresión:</h4>
           <label class="flex items-center">
             <input type="checkbox" id="compress-backup" class="mr-3 text-purple-600">
-            <span>Comprimir archivo (reduce tamaño)</span>
+            <span>Comprimir archivo</span>
           </label>
         </div>
       </div>
@@ -363,6 +390,7 @@ export default function BackupPage() {
     if (document.getElementById('backup-projects').checked) selected.push('projects');
     if (document.getElementById('backup-projectcategories').checked) selected.push('projectcategories');
     if (document.getElementById('backup-roles').checked) selected.push('roles');
+    if (document.getElementById('backup-platforms').checked) selected.push('platforms'); // ← NUEVO
     if (document.getElementById('backup-reviews').checked) selected.push('reviews');
     if (document.getElementById('backup-audits').checked) selected.push('audits');
     if (document.getElementById('backup-notifications').checked) selected.push('notifications');
@@ -383,8 +411,8 @@ export default function BackupPage() {
     document.getElementById('select-all').addEventListener('click', () => {
       const checkboxes = [
         'backup-users', 'backup-companies', 'backup-projects',
-        'backup-projectcategories', 'backup-roles', 'backup-reviews',
-        'backup-audits', 'backup-notifications'
+        'backup-projectcategories', 'backup-roles', 'backup-platforms', // ← AGREGADO platforms
+        'backup-reviews', 'backup-audits', 'backup-notifications'
       ];
       const allChecked = checkboxes.every(id => document.getElementById(id).checked);
       checkboxes.forEach(id => {

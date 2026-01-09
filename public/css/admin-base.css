@@ -82,3 +82,8 @@
   background: linear-gradient(135deg, rgba(229, 231, 235, 0.9), rgba(255, 255, 255, 0.9));
   color: rgba(17, 24, 39, var(--tw-text-opacity));
 }
+/* Asegura que el menú desplegable del select use fondo oscuro */
+select option {
+  background-color: #1f2937 !important; /* gray-800 */
+  color: white !important;
+}
